@@ -207,8 +207,10 @@ li { list-style: none; }
   align-items: baseline;
   gap: var(--s-2) var(--s-6);
 }
-.worked ul { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-6); }
-.worked li { font-weight: 600; color: var(--muted); }
+/* Inline + balance so a wrapped list splits evenly instead of orphaning the last name */
+.worked ul { line-height: 2.1; text-wrap: balance; }
+.worked li { display: inline; white-space: nowrap; margin-right: var(--s-4); font-weight: 600; color: var(--muted); }
+.worked li:last-child { margin-right: 0; }
 
 @media (min-width: 52rem) {
   .hero { padding-block: var(--s-24) var(--s-16); }
