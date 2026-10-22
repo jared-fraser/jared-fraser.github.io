@@ -1,1 +1,589 @@
-Hello World
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jared Fraser - Engineering Manager &amp; Software Engineer</title>
+<meta name="description" content="Jared Fraser, Engineering Manager and Software Engineer in Brisbane, Australia.">
+<meta name="theme-color" content="#111214">
+<link rel="canonical" href="https://jared-fraser.github.io/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jared-fraser.github.io/">
+<meta property="og:title" content="Jared Fraser - Engineering Manager &amp; Software Engineer">
+<meta property="og:description" content="I lead product engineering teams and stay hands-on in the systems they ship.">
+<meta property="og:image" content="https://jared-fraser.github.io/images/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one left-aligned 72rem column. Running text is capped near 62ch; skills and the project card use the full width. */
+:root {
+  color-scheme: dark;
+
+  /* colour */
+  --bg: #111214;
+  --surface: #17181b;
+  --line: #26282d;
+  --line-strong: #383b42;
+  --fg: #ecebe6;
+  --muted: #a3a39c;
+  --faint: #86867f;
+  --accent: #e9b44c;
+  --accent-ink: #17130a;
+
+  /* type */
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --text-xs: 0.75rem;   /* 12 mono labels */
+  --text-sm: 0.875rem;  /* 14 meta */
+  --text-md: 1.0625rem; /* 17 body */
+  --text-lg: 1.25rem;   /* 20 lead */
+  --text-xl: 1.75rem;   /* 28 section heads */
+  --text-2xl: clamp(2.75rem, 8vw, 5.5rem); /* hero name */
+
+  /* space (4px base) */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-6: 1.5rem;
+  --s-8: 2rem;
+  --s-12: 3rem;
+  --s-16: 4rem;
+  --s-24: 6rem;
+
+  --radius: 4px;
+  --max: 72rem;
+}
+
+* { box-sizing: border-box; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: var(--accent); color: var(--accent-ink); }
+
+a { color: inherit; }
+h1, h2, h3 { margin: 0; text-wrap: balance; font-weight: 600; }
+p { margin: 0; }
+ul, ol, dl, dd { margin: 0; padding: 0; }
+li { list-style: none; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.wrap {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 40rem) {
+  .wrap {
+    padding-left: max(32px, env(safe-area-inset-left, 0px));
+    padding-right: max(32px, env(safe-area-inset-right, 0px));
+  }
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+}
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.skip {
+  position: absolute;
+  left: -999px;
+  top: var(--s-2);
+  z-index: 30;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: var(--s-2) var(--s-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  text-decoration: none;
+}
+.skip:focus { left: max(16px, env(safe-area-inset-left, 0px)); }
+
+/* ---------- section scaffold ---------- */
+.section {
+  border-top: 1px solid var(--line);
+  padding-block: var(--s-16);
+}
+.section-body { min-width: 0; }
+.section-title {
+  font-size: var(--text-xl);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  font-weight: 500;
+  max-width: 28ch;
+  margin-bottom: var(--s-8);
+}
+@media (min-width: 52rem) {
+  .section { padding-block: var(--s-24); }
+}
+
+/* ---------- hero ---------- */
+.hero { padding-block: var(--s-16); }
+.hero-main { min-width: 0; }
+.hero-role {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-top: var(--s-4);
+}
+.hero-role b { color: var(--accent); font-weight: 500; }
+.hero h1 {
+  font-size: var(--text-2xl);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  font-weight: 700;
+}
+.hero-lead {
+  margin-top: var(--s-6);
+  font-size: var(--text-lg);
+  line-height: 1.45;
+  max-width: 34ch;
+  color: var(--fg);
+}
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-top: var(--s-8);
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: 2.75rem;
+  padding: 0 var(--s-6);
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { background: color-mix(in srgb, var(--accent) 86%, white); }
+.btn-secondary { border-color: var(--line-strong); color: var(--fg); background: transparent; }
+.btn-secondary:hover { border-color: var(--muted); background: var(--surface); }
+.arrow { font-family: var(--font-mono); font-weight: 400; }
+
+.worked {
+  margin-top: var(--s-16);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-2) var(--s-6);
+}
+.worked ul { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-6); }
+.worked li { font-weight: 600; color: var(--muted); }
+
+@media (min-width: 52rem) {
+  .hero { padding-block: var(--s-24) var(--s-16); }
+}
+
+/* ---------- about ---------- */
+.prose { display: grid; gap: var(--s-6); max-width: 62ch; }
+.prose p { color: var(--muted); }
+.prose p strong { color: var(--fg); font-weight: 500; }
+
+/* ---------- skills ---------- */
+.skills { border-top: 1px solid var(--line); }
+.skill-row {
+  display: grid;
+  gap: var(--s-3);
+  padding-block: var(--s-6);
+  border-bottom: 1px solid var(--line);
+}
+.skill-row h3 {
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+.chips { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.chip {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  line-height: 1;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  color: var(--fg);
+  white-space: nowrap;
+}
+.chip small { color: var(--faint); font-size: inherit; }
+@media (min-width: 40rem) {
+  .skill-row { grid-template-columns: 12rem minmax(0, 1fr); gap: var(--s-6); align-items: baseline; }
+}
+
+/* ---------- projects ---------- */
+.project {
+  display: grid;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+.shot {
+  position: relative;
+  aspect-ratio: 1400 / 622;
+  max-width: 100%;
+  background: #0b2a52;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+.shot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 48% 50%;
+}
+.project-body {
+  display: grid;
+  gap: var(--s-6);
+  padding: var(--s-6);
+  align-content: start;
+  min-width: 0;
+}
+.project-head { display: grid; gap: var(--s-1); }
+.project-head h3 { font-size: var(--text-xl); letter-spacing: -0.015em; line-height: 1.15; }
+.project dl { display: grid; gap: var(--s-2); }
+.project dd + dt { margin-top: var(--s-4); }
+.contrib { display: grid; gap: var(--s-2); }
+.contrib li { position: relative; padding-left: var(--s-6); }
+.contrib li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.8em;
+  width: var(--s-3);
+  height: 1px;
+  background: var(--accent);
+}
+.project-summary,
+.project dd { color: var(--muted); }
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--fg);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-strong);
+  padding-block: var(--s-1);
+  justify-self: start;
+  transition: border-color 120ms ease, color 120ms ease;
+}
+.project-link:hover { border-color: var(--accent); color: var(--accent); }
+@media (min-width: 64rem) {
+  .project-body { padding: var(--s-8); }
+  .project-body > p, .project dl { max-width: 62ch; }
+}
+
+/* ---------- contact ---------- */
+.contact { border-top: 1px solid var(--line); padding-block: var(--s-16) var(--s-8); }
+.contact-title {
+  font-size: clamp(2rem, 5.5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  max-width: 18ch;
+}
+.contact-lead { margin-top: var(--s-4); color: var(--muted); max-width: 48ch; }
+.email-row {
+  margin-top: var(--s-8);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3) var(--s-4);
+}
+.email {
+  font-family: var(--font-mono);
+  font-size: clamp(1.05rem, 3.2vw, 1.5rem);
+  color: var(--fg);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 2px;
+  user-select: all;
+  overflow-wrap: anywhere;
+}
+.email:hover { color: var(--accent); }
+.copy-status { color: var(--faint); }
+.copy {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  padding: 0 var(--s-4);
+}
+.socials {
+  margin-top: var(--s-12);
+  display: grid;
+  border-top: 1px solid var(--line);
+}
+.socials a {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr) auto;
+  gap: var(--s-4);
+  align-items: baseline;
+  padding-block: var(--s-4);
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  transition: background-color 120ms ease;
+}
+.socials a .handle { font-size: var(--text-md); overflow-wrap: anywhere; }
+.socials a .arrow { color: var(--faint); transition: color 120ms ease, transform 120ms ease; }
+.socials a:hover .handle { color: var(--accent); }
+.socials a:hover .arrow { color: var(--accent); transform: translate(2px, -2px); }
+@media (max-width: 30rem) {
+  .socials a { grid-template-columns: minmax(0, 1fr) auto; row-gap: var(--s-1); }
+  .socials a .label { grid-column: 1 / -1; }
+}
+.colophon {
+  margin-top: var(--s-16);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--s-2) var(--s-6);
+  color: var(--faint);
+}
+@media (min-width: 52rem) {
+  .contact { padding-block: var(--s-24) var(--s-8); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<main id="main">
+  <section class="hero" aria-labelledby="hero-name">
+    <div class="wrap">
+      <div class="hero-main">
+        <h1 id="hero-name">Jared Fraser</h1>
+        <p class="hero-role"><b>Engineering Manager</b> / Software Engineer</p>
+        <p class="hero-lead">I lead product engineering teams and stay hands-on in the systems they ship.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contact">Get in touch</a>
+          <a class="btn btn-secondary" href="#projects">See projects</a>
+          <a class="btn btn-secondary" href="https://github.com/jared-fraser" rel="noopener">GitHub <span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+
+      <div class="worked">
+        <span class="label">Built awesome things at</span>
+        <ul role="list" aria-label="Companies">
+          <li>Leonardo.Ai</li>
+          <li>Canva</li>
+          <li>Swyftx</li>
+          <li>Mr Yum</li>
+          <li>Youfoodz</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about" aria-labelledby="about-h">
+    <div class="wrap">
+      <div class="section-body">
+        <h2 class="section-title" id="about-h">Engineering manager, still close to the code.</h2>
+        <div class="prose">
+          <p>I've been building software for <strong>more than 15 years</strong>, and for a good part of that I've been managing the teams doing it. Most recently I was an Engineering Manager at <strong>Leonardo.Ai</strong>, now part of Canva, where I led the team building <strong>Blueprints</strong>: a workflow engine for AI-powered image and video generation, running on NestJS, AWS Step Functions and ECS.</p>
+          <p>Before that I ran engineering teams at <strong>Swyftx</strong>, <strong>Mr Yum</strong> and <strong>Youfoodz</strong>. I work mostly in TypeScript and Go, with Postgres, Redis and Kafka underneath, and AWS and Terraform holding it all up. I'm based in Brisbane.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills" aria-labelledby="skills-h">
+    <div class="wrap">
+      <div class="section-body">
+        <h2 class="section-title" id="skills-h">What I build with, and how I run teams.</h2>
+        <div class="skills">
+          <div class="skill-row">
+            <h3>Languages</h3>
+            <ul class="chips" role="list">
+              <li class="chip">TypeScript / Node.js</li>
+              <li class="chip">Go</li>
+            </ul>
+          </div>
+          <div class="skill-row">
+            <h3>APIs &amp; Data</h3>
+            <ul class="chips" role="list">
+              <li class="chip">GraphQL</li>
+              <li class="chip">PostgreSQL</li>
+              <li class="chip">Redis</li>
+              <li class="chip">Kafka</li>
+            </ul>
+          </div>
+          <div class="skill-row">
+            <h3>Cloud &amp; Infra</h3>
+            <ul class="chips" role="list">
+              <li class="chip"><small>AWS</small> ECS</li>
+              <li class="chip"><small>AWS</small> RDS / Aurora</li>
+              <li class="chip"><small>AWS</small> Step Functions</li>
+              <li class="chip"><small>AWS</small> API Gateway</li>
+              <li class="chip"><small>AWS</small> Route 53</li>
+              <li class="chip">Terraform</li>
+            </ul>
+          </div>
+          <div class="skill-row">
+            <h3>Platforms &amp; CI</h3>
+            <ul class="chips" role="list">
+              <li class="chip">GitHub Actions</li>
+              <li class="chip">Supabase</li>
+              <li class="chip">Fly.io</li>
+            </ul>
+          </div>
+          <div class="skill-row">
+            <h3>Leadership</h3>
+            <ul class="chips" role="list">
+              <li class="chip">Delivery</li>
+              <li class="chip">Mentoring</li>
+              <li class="chip">Team Scaling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects" aria-labelledby="projects-h">
+    <div class="wrap">
+      <div class="section-body">
+        <h2 class="section-title" id="projects-h">Featured project.</h2>
+        <article class="project" aria-labelledby="p-blueprints">
+          <div class="shot">
+            <img src="images/blueprints.jpg" width="1400" height="622" loading="lazy" decoding="async" alt="A wooden and brass marble-run machine carrying a tennis ball along a curved track, from the Blueprints landing page">
+          </div>
+          <div class="project-body">
+            <div class="project-head">
+              <span class="label">Leonardo.Ai (Canva)</span>
+              <h3 id="p-blueprints">Blueprints</h3>
+            </div>
+            <p class="project-summary">A workflow engine for AI-powered image and video generation. Each Blueprint chains models, prompts, references and settings into a single click.</p>
+            <dl>
+              <dt class="label">Problem solved</dt>
+              <dd>Getting a good result by hand means choosing a model, tuning settings and iterating. A Blueprint runs that whole pipeline end to end from one input, and picks up new models as they ship, so the workflow stays one click.</dd>
+              <dt class="label">My role</dt>
+              <dd>
+                <ul class="contrib" role="list">
+                  <li>Led the backend implementation.</li>
+                  <li>Worked with product stakeholders to define requirements and set expectations.</li>
+                  <li>Wrote and reviewed code alongside the team.</li>
+                </ul>
+              </dd>
+            </dl>
+            <ul class="chips" role="list" aria-label="Tech stack">
+              <li class="chip">NestJS</li>
+              <li class="chip">AWS Step Functions</li>
+              <li class="chip">ECS</li>
+            </ul>
+            <a class="project-link" href="https://leonardo.ai/blueprints" rel="noopener">leonardo.ai/blueprints <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="contact" id="contact" aria-labelledby="contact-h">
+  <div class="wrap">
+    <h2 class="contact-title" id="contact-h">Get in touch.</h2>
+    <p class="contact-lead">Email is the best way to reach me.</p>
+
+    <div class="email-row">
+      <a class="email" id="email" href="mailto:jared@fraser.gg">jared@fraser.gg</a>
+      <button class="btn btn-secondary copy" id="copy" type="button" aria-label="Copy email address" hidden>Copy</button>
+      <span class="mono copy-status" id="copy-status" role="status" aria-live="polite"></span>
+    </div>
+
+    <nav class="socials" aria-label="Elsewhere">
+      <a href="https://github.com/jared-fraser" rel="noopener">
+        <span class="label">GitHub</span><span class="handle">github.com/jared-fraser</span><span class="arrow" aria-hidden="true">↗</span>
+      </a>
+      <a href="https://www.linkedin.com/in/jaredfr/" rel="noopener">
+        <span class="label">LinkedIn</span><span class="handle">linkedin.com/in/jaredfr</span><span class="arrow" aria-hidden="true">↗</span>
+      </a>
+    </nav>
+
+    <div class="colophon mono">
+      <span>© 2026 Jared Fraser</span>
+      <span>Brisbane, Australia</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Copy email, falling back to selecting the text.
+  var btn = document.getElementById("copy");
+  var status = document.getElementById("copy-status");
+  var email = document.getElementById("email");
+  var clearTimer;
+  btn.hidden = false;
+  function announce(message) {
+    status.textContent = message;
+    clearTimeout(clearTimer);
+    clearTimer = setTimeout(function () {
+      status.textContent = "";
+      btn.textContent = "Copy";
+    }, 4000);
+  }
+  function selectEmail() {
+    var range = document.createRange();
+    range.selectNodeContents(email);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    announce("Selected. Press Ctrl+C or Cmd+C to copy.");
+  }
+  btn.addEventListener("click", function () {
+    var text = email.textContent.trim();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        btn.textContent = "Copied";
+        announce("Email copied to clipboard.");
+      }, selectEmail);
+    } else {
+      selectEmail();
+    }
+  });
+})();
+</script>
+</body>
+</html>
