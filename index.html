@@ -195,6 +195,10 @@ li { list-style: none; }
 .btn-secondary { border-color: var(--line-strong); color: var(--fg); background: transparent; }
 .btn-secondary:hover { border-color: var(--muted); background: var(--surface); }
 .arrow { font-family: var(--font-mono); font-weight: 400; }
+/* Three buttons stop fitting on one row below ~422px; GitHub is also in the footer */
+@media (max-width: 26.5rem) {
+  .cta-github { display: none; }
+}
 
 .worked {
   margin-top: var(--s-16);
@@ -399,7 +403,7 @@ li { list-style: none; }
         <div class="cta-row">
           <a class="btn btn-primary" href="#contact">Get in touch</a>
           <a class="btn btn-secondary" href="#projects">See projects</a>
-          <a class="btn btn-secondary" href="https://github.com/jared-fraser" rel="noopener">GitHub <span class="arrow" aria-hidden="true">↗</span></a>
+          <a class="btn btn-secondary cta-github" href="https://github.com/jared-fraser" rel="noopener">GitHub <span class="arrow" aria-hidden="true">↗</span></a>
         </div>
       </div>
 
